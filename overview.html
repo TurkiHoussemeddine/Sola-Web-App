@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Sola</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./CSS/overview.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Amiri&family=Aref+Ruqaa&family=Reem+Kufi&family=Scheherazade&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@100&family=Montserrat:wght@100&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@100&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Exo:wght@500&display=swap" rel="stylesheet">
+    <link rel="icon" href="img/asteroid.svg" type="image/svg">
+    <link rel="stylesheet" href="https://unpkg.com/kursor/dist/kursor.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+
+</head>
+
+<body onresize="remap()" onload="remap()" onload="map_anim()">
+
+    <div id="quiz">
+        <div id="rocket-cont" onmouseenter="show_options()" onmouseleave="hide_options()">
+
+            <img id="rocket" src="img/rocket.svg">
+            <p id="quiz_pop">Go for a Quiz?</p>
+            <div id="quiz_resp">
+                <p id="yes_opt" onclick="option_yes()">Yes</p>
+                <p id="no_opt" onclick="option_no()">No</p>
+                <p id="goaway_opt" onclick="option_goaway()">Go away</p>
+            </div>
+        </div>
+        <div id="quiz_main-cont">
+            <div id="quiz_main"></div>
+
+            <div id="quiz_intro">
+                <div id=nomorph>
+                    <H1 id="quiz_intro_title">Quiz</H1>
+                    <h3 id="quiz_intro_notice_title">Notice to participants</h3>
+                    <p id="quiz_intro_notice_desc">Welcome to the Sola Space Quiz in collaboration with TLNT . We are
+                        glad
+                        to inform you that thanks to
+                        it's Space Tourism Program , TLNT is looking
+                        for candidates to fill its interplanetary ships' empty seats , and will be picking winners from
+                        this
+                        quiz for a thorough evaluation , after which the remaining
+                        accepted winners will get to experience the beauty of space first hand (more on this from TLNT)
+                    </p>
+                </div>
+
+                <h3 id="quiz_intro_rules_title">The rules</h3>
+                <p id="quiz_intro_rules_desc">There are 10 random questions , each having 3 possible choices , 1
+                    true answer and 10 seconds time
+                    limit .<br><span id="towin">To win</span> , you must give all the correct answers (100 score). if you quit , there won't be second chances.</p>
+                <div id="hidden_question">
+                    <h3 id="question_n">Question 1</h3>
+                    <p id="question">Lorem, ipsum dolor sit amet consectetur adipisicing eli ?</p>
+                </div>
+                <div id="goin">
+                    <div id="hidden_resp">
+                        <a id="resp1"><span>resp1</span></a>
+                        <a id="resp2"><span>resp2</span></a>
+                        <a id="resp3"><span>resp3</span></a>
+                    </div>
+                    <a id="quit_box" onclick="quit_quiz()"><span>Quit</span></a>
+                    <!-- can't place inside quiz main cuz it will scale with the div-->
+                    <a id="begin_box" onclick="intro_to_questions()"><span>Begin</span></a>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div id="more_info">
+        <div id="main-bar">
+            <div id="bar"></div>
+        </div>
+        <div id="actual_data">
+            <div id="first_col">
+                <div class="data_bloc">
+                    <h2>PLANET TYPE</h2>
+                    <h3></h3>
+                    <p></p>
+                </div>
+                <div class="data_bloc">
+                    <h2>AVERAGE ORBIT DISTANCE</h2>
+                    <p>(Average distance between the sun and its orbiting planet at all times.)</p>
+                    <h3></h3>
+                </div>
+                <div class="data_bloc">
+                    <h2>MEAN ORBIT VELOCITY</h2>
+                    <p>(Average speed at which a planet orbits the sun.)</p>
+                    <h3></h3>
+                </div>
+                <div class="data_bloc">
+                    <h2>ORBIT ECCENTRICITY</h2>
+                    <p>(The deviation of a planet's orbital path from the shape of a circle.)</p>
+                    <h3></h3>
+                </div>
+                <div class="data_bloc">
+                    <h2>EQUATORIAL INCLINATION</h2>
+                    <p>(The tilt of an object's orbit around a celestial body.)</p>
+                    <h3></h3>
+                </div>
+                <div class="data_bloc">
+                    <h2>EQUATORIAL RADIUS</h2>
+                    <p>(Planet's radius at the Equator.)</p>
+                    <h3></h3>
+                </div>
+
+            </div>
+            <div id="second_col">
+                <div class="data_bloc">
+                    <h2>EQUATORIAL CIRCUMFERENCE</h2>
+                    <p>(The distance around a planet at the Equator.)</p>
+                    <h3></h3>
+                </div>
+                <div class="data_bloc">
+                    <h2>VOLUME</h2>
+                    <h3></h3>
+                </div>
+                <div class="data_bloc">
+                    <h2>MASS</h2>
+                    <h3></h3>
+                </div>
+                <div class="data_bloc">
+                    <h2>SURFACE AREA</h2>
+                    <h3></h3>
+                </div>
+                <div class="data_bloc">
+                    <h2>SURFACE GRAVITY</h2>
+                    <h3></h3>
+                </div>
+                <div class="data_bloc">
+                    <h2>ATMOSPHERIC CONSTITUENTS</h2>
+                    <h3></h3>
+                </div>
+                <div class="data_bloc">
+                    <h2>NUMBER OF MOONS</h2>
+                    <h3></h3>
+                </div>
+            </div>
+            <div id="third_col">
+                <div class="data_bloc">
+                    <h2>PHOTOGRAPH</h2>
+                    <img>
+                    <h3></h3>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="nav">
+
+        <div class="nav-cont" id="nav-galaxy-cont">
+            <img id="nav-galaxy" src="img/astronomy.svg">
+            <h4 class="nav-p" id="nav-p-over">Overview</h4>
+        </div>
+        <div class="nav-cont" id="nav-sun-cont">
+            <div id="nav-sun-alt"></div>
+            <a href="#sun"> <img id="nav-sun" src="img/son.svg"></a>
+            <h4 class="nav-p" id="nav-p-sun">Sun</h4>
+        </div>
+        <div class="nav-cont">
+            <div id="nav-mercury-alt"></div>
+            <img id="nav-mercury" src="img/mercury.svg">
+            <h4 class="nav-p" id="nav-p-mercury">Mercury</h4>
+        </div>
+        <div class="nav-cont">
+            <div id="nav-venus-alt"></div>
+            <img id="nav-venus" src="img/venus.svg">
+            <h4 class="nav-p" id="nav-p-venus">Venus</h4>
+        </div>
+        <div class="nav-cont">
+            <div id="nav-earth-alt"></div>
+            <img id="nav-earth" src="img/planet-earth_alt2.svg">
+            <h4 class="nav-p" id="nav-p-earth">Earth</h4>
+        </div>
+        <div class="nav-cont">
+            <div id="nav-mars-alt"></div>
+            <img id="nav-mars" src="img/mars.svg">
+            <h4 class="nav-p" id="nav-p-mars">Mars</h4>
+        </div>
+        <div class="nav-cont">
+            <div id="nav-jupiter-alt"></div>
+            <img id="nav-jupiter" src="img/jupiter_alt.svg">
+            <h4 class="nav-p" id="nav-p-jupiter">Jupiter</h4>
+        </div>
+        <div class="nav-cont">
+            <div id="nav-saturn-alt"></div>
+            <img id="nav-saturn" src="img/saturn.svg">
+            <h4 class="nav-p" id="nav-p-saturn">Saturn</h4>
+        </div>
+        <div class="nav-cont">
+            <div id="nav-uranus-alt"></div>
+            <img id="nav-uranus" src="img/uranus.svg">
+            <h4 class="nav-p" id="nav-p-uranus">Uranus</h4>
+        </div>
+        <div class="nav-cont">
+            <div id="nav-neptune-alt"></div>
+            <img id="nav-neptune" src="img/neptune.svg">
+            <h4 class="nav-p" id="nav-p-neptune">Neptune</h4>
+        </div>
+        <div class="nav-cont">
+            <div id="nav-pluto-alt"></div>
+            <img id="nav-pluto" src="img/pluto.svg">
+            <h4 class="nav-p" id="nav-p-pluto">Pluto</h4>
+        </div>
+        <div class="nav-sens" onclick="hand_pull()">
+            <a href="#sola-cont" id="galaxy-sens" onclick="nav_var_hide()" onmouseover="rotate_galaxy()"
+                onmouseout="galaxy_p_hide()"></a>
+            <a href="#sun" id="sun-sens" onmouseover="show_planet('sun',3,4.08)" onmouseout="hide_planet('sun',3)"
+                onclick="laod_data('sun');quiz_popdown();"></a>
+            <a href="#mercury" id="mercury-sens" onmouseover="show_planet('mercury',0.5,4.08)"
+                onclick="laod_data('mercury');quiz_popdown();" onmouseout="hide_planet('mercury',0.5)"></a>
+            <a href="#venus" id="venus-sens" onmouseover="show_planet('venus',1,4.08)"
+                onclick="laod_data('venus');quiz_popdown();" onmouseout="hide_planet('venus',1)"></a>
+            <a href="#earth" id="earth-sens" onmouseover="show_planet('earth',1,4.08)"
+                onclick="laod_data('earth');quiz_popdown();" onmouseout="hide_planet('earth',1)"></a>
+            <!--/*onclick="obf()"*/ -->
+            <a href="#mars" id="mars-sens" onmouseover="show_planet('mars',0.8,4.08)"
+                onclick="laod_data('mars');quiz_popdown();" onmouseout="hide_planet('mars',0.8)"></a>
+            <a href="#jupiter" id="jupiter-sens" onmouseover="show_planet('jupiter',1.8,4.08)"
+                onclick="laod_data('jupiter');quiz_popdown();" onmouseout="hide_planet('jupiter',1.8)"></a>
+            <a href="#saturn" id="saturn-sens" onmouseover="show_planet('saturn',1.5,4.08)"
+                onclick="laod_data('saturn');quiz_popdown();" onmouseout="hide_planet('saturn',1.5)"></a>
+            <a href="#uranus" id="uranus-sens" onmouseover="show_planet('uranus',1.2,4.08)"
+                onclick="laod_data('uranus');quiz_popdown();" onmouseout="hide_planet('uranus',1.2)"></a>
+            <a href="#neptune" id="neptune-sens" onmouseover="show_planet('neptune',1.2,4.08)"
+                onclick="laod_data('neptune');quiz_popdown();" onmouseout="hide_planet('neptune',1.2)"></a>
+            <a href="#pluto" id="pluto-sens" onmouseover="show_planet('pluto',0.4,4.08)"
+                onclick="laod_data('pluto');quiz_popdown();" onmouseout="hide_planet('pluto',0.4)"></a>
+        </div>
+    </div>
+    <div id="pullup-cont">
+        <img class="pullup" id="pullup-sun" src="img/drag.svg">
+    </div>
+
+
+
+    <div class="main-container">
+
+        <section class="over--sec">
+            <div id="sola-cont">
+                <h1 id="sola"><a href="#earth">Sola</a></h1>
+                <p id="solaint">Discover our Solar System. </p>
+            </div>
+            <div id="vid-cont">
+                <video src="vid/solar_system.webm" autoplay muted loop id="solasys"></video>
+                <div id="planet_labels">
+                    <a href="#sun" onclick="nav_rev();laod_data('sun');">
+                        <div id="sun_hl" onmouseover="aabi_hov(document.getElementById('sun_text'),8)"
+                            onmouseleave="fara_hov(document.getElementById('sun_text'),8)"></div>
+                    </a>
+                    <a href="#mercury" onclick="nav_rev();laod_data('mercury');">
+                        <div id="mercury_hl" onmouseover="aabi_hov(document.getElementById('mercury_text'),9.5)"
+                            onmouseleave="fara_hov(document.getElementById('mercury_text'),9.5)"></div>
+                    </a>
+                    <a href="#venus" onclick="nav_rev();laod_data('venus');">
+                        <div id="venus_hl" onmouseover="aabi_hov(document.getElementById('venus_text'),7)"
+                            onmouseleave="fara_hov(document.getElementById('venus_text'),7)"></div>
+                    </a>
+                    <a href="#earth" onclick="nav_rev();laod_data('earth');">
+                        <div id="earth_hl"
+                            onmouseover="aabi_hov(document.getElementById('earth_text'),20);aabi_hov(document.getElementById('earth_text_plus'),20);"
+                            onmouseleave="fara_hov(document.getElementById('earth_text'),20);fara_hov(document.getElementById('earth_text_plus'),20);">
+                        </div>
+                    </a>
+                    <a href="#mars" onclick="nav_rev();laod_data('mars');">
+                        <div id="mars_hl" onmouseover="aabi_hov(document.getElementById('mars_text'),6)"
+                            onmouseleave="fara_hov(document.getElementById('mars_text'),6)"></div>
+                    </a>
+                    <a href="#jupiter" onclick="nav_rev();laod_data('jupiter');">
+                        <div id="jupite_hl" onmouseover="aabi_hov(document.getElementById('jupiter_text'),8.5)"
+                            onmouseleave="fara_hov(document.getElementById('jupiter_text'),8.5)"></div>
+                    </a>
+                    <a href="#saturn" onclick="nav_rev();laod_data('saturn');">
+                        <div id="saturn_hl" onmouseover="aabi_hov(document.getElementById('saturn_text'),8)"
+                            onmouseleave="fara_hov(document.getElementById('saturn_text'),8)"></div>
+                    </a>
+                    <a href="#uranus" onclick="nav_rev();laod_data('uranus');">
+                        <div id="uranus_hl" onmouseover="aabi_hov(document.getElementById('uranus_text'),8.5)"
+                            onmouseleave="fara_hov(document.getElementById('uranus_text'),8.5)"></div>
+                    </a>
+                    <a href="#neptune" onclick="nav_rev();laod_data('neptune');">
+                        <div id="neptune_hl" onmouseover="aabi_hov(document.getElementById('neptune_text'),10.5)"
+                            onmouseleave="fara_hov(document.getElementById('neptune_text'),10.5)"></div>
+                    </a>
+                    <a href="#pluto" onclick="nav_rev();laod_data('pluto');">
+                        <div id="pluto_hl"
+                            onmouseover="aabi_hov(document.getElementById('pluto_text'),9.5);aabi_hov(document.getElementById('pluto_text_plus'),9.5);"
+                            onmouseleave="fara_hov(document.getElementById('pluto_text'),9.5);fara_hov(document.getElementById('pluto_text_plus'),9.5);">
+                        </div>
+                    </a>
+
+                    <div id="sun_line"></div>
+                    <a href="#sun" onclick="nav_rev();laod_data('sun');">
+                        <p id="sun_text" onmouseover="aabi_hov(document.getElementById('sun_text'),8)"
+                            onmouseleave="fara_hov(document.getElementById('sun_text'),8)">Sun</p>
+                    </a>
+
+                    <div id="mercury_line"></div>
+                    <a href="#mercury" onclick="nav_rev();laod_data('mercury');">
+                        <p id="mercury_text" onmouseover="aabi_hov(document.getElementById('mercury_text'),9.5)"
+                            onmouseleave="fara_hov(document.getElementById('mercury_text'),9.5)">Mercury</p>
+                    </a>
+
+                    <div id="venus_line"></div>
+                    <a href="#venus" onclick="nav_rev();laod_data('venus');">
+                        <p id="venus_text" onmouseover="aabi_hov(document.getElementById('venus_text'),7)"
+                            onmouseleave="fara_hov(document.getElementById('venus_text'),7)">Venus</p>
+                    </a>
+
+                    <div id="earth_line"></div>
+                    <a href="#earth" onclick="nav_rev();laod_data('earth');">
+                        <p id="earth_text"
+                            onmouseover="aabi_hov(document.getElementById('earth_text'),20);aabi_hov(document.getElementById('earth_text_plus'),20);"
+                            onmouseleave="fara_hov(document.getElementById('earth_text'),20);fara_hov(document.getElementById('earth_text_plus'),20);">
+                            Earth<br><span id="earth_text_plus" style="white-space: nowrap;font-size: 0.8vw;">(we here,
+                                may change)</span></p>
+                    </a>
+
+                    <div id="mars_line"></div>
+                    <a href="#mars" onclick="nav_rev();laod_data('mars');">
+                        <p id="mars_text" onmouseover="aabi_hov(document.getElementById('mars_text'),6)"
+                            onmouseleave="fara_hov(document.getElementById('mars_text'),6)">Mars</p>
+                    </a>
+
+                    <div id="jupiter_line"></div>
+                    <a href="#jupiter" onclick="nav_rev();laod_data('jupiter');">
+                        <p id="jupiter_text" onmouseover="aabi_hov(document.getElementById('jupiter_text'),8.5)"
+                            onmouseleave="fara_hov(document.getElementById('jupiter_text'),8.5)">Jupiter</p>
+                    </a>
+
+                    <div id="saturn_line"></div>
+                    <a href="#saturn" onclick="nav_rev();laod_data('saturn');">
+                        <p id="saturn_text" onmouseover="aabi_hov(document.getElementById('saturn_text'),8)"
+                            onmouseleave="fara_hov(document.getElementById('saturn_text'),8)">Saturn</p>
+                    </a>
+
+                    <div id="uranus_line"></div>
+                    <a href="#uranus" onclick="nav_rev();laod_data('uranus');">
+                        <p id="uranus_text" onmouseover="aabi_hov(document.getElementById('uranus_text'),8.5)"
+                            onmouseleave="fara_hov(document.getElementById('uranus_text'),8.5)">Uranus</p>
+                    </a>
+
+                    <div id="neptune_line"></div>
+                    <a href="#neptune" onclick="nav_rev();laod_data('neptune');">
+                        <p id="neptune_text" onmouseover="aabi_hov(document.getElementById('neptune_text'),10.5)"
+                            onmouseleave="fara_hov(document.getElementById('neptune_text'),10.5)">Neptune</p>
+                    </a>
+
+                    <div id="pluto_line"></div>
+                    <a href="#pluto" onclick="nav_rev();laod_data('pluto');">
+                        <p id="pluto_text"
+                            onmouseover="aabi_hov(document.getElementById('pluto_text'),9.5);aabi_hov(document.getElementById('pluto_text_plus'),9.5);"
+                            onmouseleave="fara_hov(document.getElementById('pluto_text'),9.5);fara_hov(document.getElementById('pluto_text_plus'),9.5);">
+                            Pluto<br><span id="pluto_text_plus" style="white-space: nowrap;font-size: 0.8vw;">(click
+                                me!)</span></p>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        <div class="container">
+
+            <section id="sun" class="planet">
+
+                <div class="planet--data">
+                    <h1>Sun</h1>
+                    <h3>Our Star.</h3>
+                    <p id="sun--desc">The Sun is the star at the center of the Solar System. It is a nearly perfect
+                        sphere of hot plasma, heated to incandescence by nuclear fusion reactions in its core,
+                        radiating the energy mainly as visible light and infrared radiation.</p>
+                </div>
+                <div>
+                    <video src="vid/sunno_outo.webm" autoplay muted loop id="sun--vid"></video>
+                </div>
+                <div class="arrows">
+                    <a href="#mercury" onclick="laod_data('mercury');quiz_popdown();"><img src="img/right-chevron.svg"
+                            class="arrow--right"></a>
+                </div>
+
+            </section>
+
+
+
+
+        </div>
+
+        <div class="container">
+
+            <section id="mercury" class="planet">
+                <div class="enlarge--planet" onclick="enlarge_planet('mercury',25,30,5,25)">
+                    <img id="enlarge--main" src="img/mercury_real.svg">
+                    <img class="enlarge--cont" src="img/enlarge.svg">
+                </div>
+                <div class="arrows">
+                    <a href="#sun" onclick="laod_data('sun');quiz_popdown();"><img src="img/right-chevron.svg"
+                            class="arrow--left"></a>
+                </div>
+                <div class="planet--data">
+                    <h1>Mercury</h1>
+                    <h3>Swift Planet.</h3>
+                    <p id="mercury--desc">The smallest planet in our solar system and nearest to the Sun, Mercury is
+                        only slightly larger than Earth's Moon.
+                        From the surface of Mercury, the Sun would appear more than three times as large as it does when
+                        viewed from Earth, and the sunlight would be as much as seven times brighter.<br> Despite its
+                        proximity to the Sun, Mercury is not the hottest planet in our solar system – that title belongs
+                        to nearby Venus, thanks to its dense atmosphere.</p>
+                </div>
+
+                <div>
+                    <video src="vid/Merc.webm" autoplay muted loop id="mercury--vid"></video>
+                </div>
+                <div class="beam">
+                    <video src="vid/Beamoouto2.webm" autoplay muted loop class="beamo"></video>
+                </div>
+                <div class="arrows">
+                    <a href="#venus" onclick="laod_data('venus');quiz_popdown();"><img src="img/right-chevron.svg"
+                            class="arrow--right"></a>
+
+                </div>
+
+            </section>
+
+
+
+
+        </div>
+
+
+        <div class="container">
+
+            <section id="venus" class="planet">
+
+                <div class="enlarge--planet" onclick="enlarge_planet('venus',30,35,5,27.5)">
+                    <img id="enlarge--main" src="img/venus_real.svg">
+                    <img class="enlarge--cont" src="img/enlarge.svg">
+                </div>
+                <div class="arrows">
+                    <a href="#mercury" onclick="laod_data('mercury');quiz_popdown();"><img src="img/right-chevron.svg"
+                            class="arrow--left"></a>
+                </div>
+                <div class="planet--data">
+                    <h1>Venus</h1>
+                    <h3>The Morning|Evening star.</h3>
+                    <p id="venus--desc">Similar in size and structure to Earth, Venus has been called Earth's twin.
+                        These are not identical twins, however – there are radical differences between the two worlds.
+                        Venus has a thick, toxic atmosphere filled with carbon dioxide and it’s perpetually shrouded in
+                        thick, yellowish clouds of mostly sulfuric acid that trap heat, causing a runaway greenhouse
+                        effect. It’s the hottest planet in our solar system, even though Mercury is closer to the Sun.
+                        Venus has crushing air pressure at its surface – more than 90 times that of Earth – similar to
+                        the pressure you'd encounter a mile below the ocean on Earth.
+                    </p>
+                </div>
+
+                <div>
+                    <video src="vid/venus_outo.webm" autoplay muted loop id="venus--vid"></video>
+                </div>
+                <div class="beam">
+                    <video src="vid/Beamoouto2.webm" autoplay muted loop class="beamo"></video>
+                </div>
+                <div class="arrows">
+                    <a href="#earth" onclick="laod_data('earth');quiz_popdown();"><img src="img/right-chevron.svg"
+                            class="arrow--right"></a>
+
+                </div>
+
+            </section>
+
+
+
+
+        </div>
+        <div class="container">
+
+            <section id="earth" class="planet">
+
+                <div class="enlarge--planet" onclick="enlarge_planet('earth',30,35,5,27.5)">
+                    <img id="enlarge--main" src="img/worldwide.svg">
+                    <img class="enlarge--cont" src="img/enlarge.svg">
+                </div>
+                <div class="arrows">
+                    <a href="#venus" onclick="laod_data('venus');quiz_popdown();"><img src="img/right-chevron.svg"
+                            class="arrow--left"></a>
+                </div>
+                <div class="planet--data">
+                    <h1>Earth</h1>
+                    <h3>Our Home.</h3>
+                    <p id="earth--desc">Earth is the third planet from the Sun and the only astronomical object known to
+                        harbor life.
+                        About 29% of Earth's surface is land consisting of continents and islands. The remaining 71% is
+                        covered with water, mostly by oceans, seas, gulfs, and other salt water bodies, but also by
+                        lakes, rivers, and other fresh water, which together constitute the hydrosphere. Much of Earth's
+                        polar regions are covered in ice. Earth's outer layer is divided into several rigid tectonic
+                        plates that migrate across the surface over many millions of years. Earth's interior remains
+                        active with a solid iron inner core, a liquid outer core that generates Earth's magnetic field,
+                        and a convecting mantle that drives plate tectonics.</p>
+                </div>
+                <div>
+                    <video src="vid/earth.webm" autoplay muted loop id="earth--vid"></video>
+                </div>
+                <div class="beam">
+                    <video src="vid/Beamoouto2.webm" autoplay muted loop class="beamo"></video>
+                </div>
+
+                <div class="arrows">
+                    <a href="#mars" onclick="laod_data('mars');quiz_popdown();"><img src="img/right-chevron.svg"
+                            class="arrow--right"></a>
+                </div>
+
+            </section>
+
+
+
+
+        </div>
+        <div class="container">
+
+            <section id="mars" class="planet">
+
+                <div class="enlarge--planet" onclick="enlarge_planet('mars',25,30,5,25)">
+                    <img id="enlarge--main" src="img/mars_real.svg">
+                    <img class="enlarge--cont" src="img/enlarge.svg">
+                </div>
+                <div class="arrows">
+                    <a href="#earth" onclick="laod_data('earth');quiz_popdown();"><img src="img/right-chevron.svg"
+                            class="arrow--left"></a>
+                </div>
+                <div class="planet--data">
+                    <h1>Mars</h1>
+                    <h3>The Red Planet.</h3>
+                    <p id="mars--desc">
+                        Mars is one of the most explored bodies in our solar system, and it's the only planet where
+                        we've sent rovers to roam the alien landscape. <br>Two NASA rovers and one lander are currently
+                        exploring the surface of Mars (and a Chinese lander is set to land later this year). An
+                        international fleet of eight orbiters are studying the Red Planet from above.
+                        Mars is a terrestrial planet with a thin atmosphere, with surface features reminiscent of the
+                        impact craters of the Moon and the valleys, deserts and polar ice caps of Earth.
+
+                    </p>
+                </div>
+                <div>
+                    <video src="vid/Mars.webm" autoplay muted loop playbackRate="2" id="mars--vid"></video>
+                </div>
+                <div class="beam">
+                    <video src="vid/Beamoouto2.webm" autoplay muted loop class="beamo"></video>
+                </div>
+
+                <div class="arrows">
+                    <a href="#jupiter" onclick="laod_data('jupiter');quiz_popdown();"><img src="img/right-chevron.svg"
+                            class="arrow--right"></a>
+                </div>
+
+            </section>
+        </div>
+
+        <div class="container">
+
+            <section id="jupiter" class="planet">
+
+                <div class="enlarge--planet" onclick="enlarge_planet('jupiter',35,37,5,27)">
+                    <img id="enlarge--main" src="img/jupiter_real.svg">
+                    <img class="enlarge--cont" src="img/enlarge.svg">
+                </div>
+                <div class="arrows">
+                    <a href="#mars" onclick="laod_data('mars');quiz_popdown();"><img src="img/right-chevron.svg"
+                            class="arrow--left"></a>
+                </div>
+                <div class="planet--data">
+                    <h1>Jupiter</h1>
+                    <h3>The Gas Giant.</h3>
+                    <p id="jupiter--desc">Jupiter has a long history surprising scientists—all the way back to 1610 when
+                        Galileo Galilei found the first moons beyond Earth. That discovery changed the way we see the
+                        universe.
+                        Fifth in line from the Sun, Jupiter is, by far, the largest planet in the solar system – more
+                        than twice as massive as all the other planets combined.
+                        Jupiter's familiar stripes and swirls are actually cold, windy clouds of ammonia and water,
+                        floating in an atmosphere of hydrogen and helium. Jupiter’s iconic Great Red Spot is a giant
+                        storm bigger than Earth that has raged for hundreds of years.
+                        One spacecraft — NASA's Juno orbiter — is currently exploring this giant world.</p>
+                </div>
+                <div>
+                    <video src="vid/Jupiter.webm" autoplay muted loop id="jupiter--vid"></video>
+                </div>
+                <div class="beam">
+                    <video src="vid/Beamoouto2.webm" autoplay muted loop class="beamo"></video>
+                </div>
+
+                <div class="arrows">
+                    <a href="#saturn" onclick="laod_data('saturn');quiz_popdown();"><img src="img/right-chevron.svg"
+                            class="arrow--right"></a>
+                </div>
+
+            </section>
+
+
+
+
+        </div>
+
+        <div class="container">
+
+            <section id="saturn" class="planet">
+
+                <div class="enlarge--planet" onclick="enlarge_planet('saturn',60,80,-8,31)">
+                    <img id="enlarge--main" src="img/saturn_real.svg">
+                    <img class="enlarge--cont" src="img/enlarge.svg">
+                </div>
+                <div class="arrows">
+                    <a href="#jupiter" onclick="laod_data('jupiter');quiz_popdown();"><img src="img/right-chevron.svg"
+                            class="arrow--left"></a>
+                </div>
+                <div class="planet--data">
+                    <h1>Saturn</h1>
+                    <h3>The Ringed Planet.</h3>
+                    <p id="saturn--desc">Saturn is the sixth planet from the Sun and the second largest planet in our
+                        solar system.<br>
+                        Adorned with thousands of beautiful ringlets, Saturn is unique among the planets. <br>It is not
+                        the
+                        only planet to have rings—made of chunks of ice and rock—but none are as spectacular or as
+                        complicated as Saturn's.<br>
+                        Like fellow gas giant Jupiter, Saturn is a massive ball made mostly of hydrogen and helium.</p>
+                </div>
+                <div>
+                    <video src="vid/Saturn.webm" autoplay muted loop id="saturn--vid"></video>
+                </div>
+                <div class="beam">
+                    <video src="vid/Beamoouto2.webm" autoplay muted loop class="beamo"></video>
+                </div>
+
+                <div class="arrows">
+                    <a href="#uranus" onclick="laod_data('uranus');quiz_popdown();"><img src="img/right-chevron.svg"
+                            class="arrow--right"></a>
+                </div>
+
+            </section>
+
+
+
+
+        </div>
+
+        <div class="container">
+
+            <section id="uranus" class="planet">
+
+                <div class="enlarge--planet" onclick="enlarge_planet('uranus',20,21,2,27.5)">
+                    <img id="enlarge--main" src="img/uranus_real.svg">
+                    <img class="enlarge--cont" src="img/enlarge.svg">
+                </div>
+                <div class="arrows">
+                    <a href="#saturn" onclick="laod_data('saturn');quiz_popdown();"><img src="img/right-chevron.svg"
+                            class="arrow--left"></a>
+                </div>
+                <div class="planet--data">
+                    <h1>Uranus</h1>
+                    <h3>Ice giant.</h3>
+                    <p id="uranus--desc">Uranus is the seventh planet from the Sun.<br>The first planet found with the
+                        aid
+                        of a telescope, Uranus was discovered in 1781 by astronomer William Herschel, although he
+                        originally thought it was either a comet or a star.<br>
+                        It's known as the “sideways planet” because it rotates on its side.<br>
+                        The Ice Giant is nearly four times larger than Earth and
+                        Like Saturn, Jupiter and Neptune, Uranus is a ringed planet. </p>
+                </div>
+                <div>
+                    <video src="vid/Uranus.webm" autoplay muted loop id="uranus--vid"></video>
+                </div>
+                <div class="beam">
+                    <video src="vid/Beamoouto2.webm" autoplay muted loop class="beamo"></video>
+                </div>
+
+                <div class="arrows">
+                    <a href="#neptune" onclick="laod_data('neptune');quiz_popdown();"><img src="img/right-chevron.svg"
+                            class="arrow--right"></a>
+                </div>
+
+            </section>
+
+
+
+
+        </div>
+
+        <div class="container">
+
+            <section id="neptune" class="planet">
+
+                <div class="enlarge--planet" onclick="enlarge_planet('neptune',30,33,5,25)">
+                    <img id="enlarge--main" src="img/neptune_real.svg">
+                    <img class="enlarge--cont" src="img/enlarge.svg">
+                </div>
+                <div class="arrows">
+                    <a href="#uranus" onclick="laod_data('uranus');quiz_popdown();"><img src="img/right-chevron.svg"
+                            class="arrow--left"></a>
+                </div>
+                <div class="planet--data">
+                    <h1>Neptune</h1>
+                    <h3>Big blue planet.</h3>
+                    <p id="neptune--desc">Neptune is the eighth and farthest-known Solar planet from the Sun. In the
+                        Solar System, it is the fourth-largest planet by diameter, the third-most-massive planet, and
+                        the
+                        densest giant planet.<br>
+                        Dark, cold and whipped by supersonic winds, it's the eighth and most distant in our solar
+                        system.
+                        More than 30 times as far from the Sun as Earth, it's the only planet in our solar system not
+                        visible to the naked eye and the first predicted by mathematics before its discovery. In 2011
+                        Neptune completed its first 165-year orbit since its discovery in 1846.<br>
+                        NASA's Voyager 2 is the only spacecraft to have visited Neptune up close. It flew past in 1989
+                        on its way out of the solar system.</p>
+                </div>
+                <div>
+                    <video src="vid/Neptune.webm" autoplay muted loop id="neptune--vid"></video>
+                </div>
+                <div class="beam">
+                    <video src="vid/Beamoouto2.webm" autoplay muted loop class="beamo"></video>
+                </div>
+
+                <div class="arrows">
+                    <a href="#pluto" onclick="laod_data('pluto');quiz_popdown();"><img src="img/right-chevron.svg"
+                            class="arrow--right"></a>
+                </div>
+
+            </section>
+
+
+
+
+        </div>
+        <div class="container">
+
+            <section id="pluto" class="planet">
+
+                <div class="enlarge--planet" onclick="enlarge_planet('pluto',25,30,5,25)">
+                    <img id="enlarge--main" src="img/pluto_real.svg">
+                    <img class="enlarge--cont" src="img/enlarge.svg">
+                </div>
+                <div class="arrows">
+                    <a href="#neptune" onclick="laod_data('neptune');quiz_popdown();"><img src="img/right-chevron.svg"
+                            class="arrow--left"></a>
+                </div>
+                <div class="planet--data">
+                    <h1>Pluto</h1>
+                    <h3>Dwarf Planet.</h3>
+                    <p id="pluto--desc">Pluto is a dwarf planet in the Kuiper
+                        belt, a ring of bodies beyond the orbit of Neptune. It was the first and the largest Kuiper belt
+                        object to be discovered. After Pluto was discovered in 1930, it was declared to be the ninth
+                        planet from the Sun. Pluto – which is smaller than Earth’s Moon – has a heart-shaped glacier
+                        that’s the size of Texas and Oklahoma. This fascinating world has blue skies, spinning moons,
+                        mountains as high as the Rockies, and it snows – but the snow is red.
+                        On July 14, 2015, NASA’s New Horizons spacecraft made its historic flight through the Pluto
+                        system – providing the first close-up images of Pluto and its moons and collecting other data
+                        that has transformed our understanding of these mysterious worlds on the solar system’s outer
+                        frontier.</p>
+                </div>
+                <div>
+                    <video src="vid/Pluto.webm" autoplay muted loop id="pluto--vid"></video>
+                </div>
+                <div class="beam">
+                    <video src="vid/Beamoouto2.webm" autoplay muted loop class="beamo"></video>
+                </div>
+
+            </section>
+
+
+
+
+        </div>
+    </div>
+    <video src="vid/Particles.mp4" autoplay muted loop id="stars"></video>
+    <script src="https://cdn.jsdelivr.net/npm/kursor@0.0.14/dist/kursor.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/baffle@0.3.6/dist/baffle.min.js"></script>
+    <!-- <script type="module" defer src="./JS/index.js"></script> -->
+    <script src="js/over-main.js"></script>
+    <script src="js/anime.min.js"></script>
+    <!-- <script src="js/anime.js"></script> -->
+</body>
+
+</html>
