@@ -17,5 +17,3 @@
     - CSS
     - JS
     - Java
-
-- Demonstration video @ .
